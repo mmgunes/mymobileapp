@@ -1,5 +1,6 @@
 import React from 'react';
 import {Text, View} from 'react-native';
+import {styles} from './style';
 
 export default function App() {
   const faktoriyel = sayi => {
@@ -39,6 +40,40 @@ export default function App() {
     console.log('map : ' + num);
   });
 
+  let todoList = [];
+
+  function rastgeleStringGetir(length) {
+    var result = '';
+    var characters =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for (var i = 0; i < 25; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+
+  function rastgeleBooleanGetir() {
+    let result = true;
+    let sayi = Math.floor(Math.random() * 100);
+
+    sayi % 2 == 0 ? (result = true) : (result = false);
+
+    return result;
+  }
+
+  for (let i = 0; i < 10; i++) {
+    // todoList.push({title: 'Çalış', complate: true});
+    todoList.push({
+      title: rastgeleStringGetir(),
+      complate: rastgeleBooleanGetir(),
+    });
+  }
+  todoList.map(todo => {
+    //console.log(todo);
+    console.log('Title : ' + todo.title + ', Complate: ' + todo.complate);
+  });
+
   return (
     <View style={{backgroundColor: 'yellow'}}>
       <Text>
@@ -54,21 +89,19 @@ export default function App() {
           : randomSayi + ' Tek Sayıdır'}
       </Text>
 
-      <View style={{backgroundColor: 'yellow'}}>
-        {numList.map((num2, indexNo) => (
-          <View>
-            <Text style={{textAlign: 'center', backgroundColor: 'aqua'}}>
-              Rastgele sayı : {num2}
-            </Text>
+      {numList.map((num2, indexNo) => (
+        <Text key={indexNo.toString()} style={styles.textStyle}>
+          Rastgele sayı {indexNo + 1} : {num2}
+        </Text>
+      ))}
 
-            {/* <Text
-            key={indexNo.toString()}
-            style={{textAlign: 'center', backgroundColor: 'yellow'}}>
-            Rastgele sayı {indexNo + 1} : {num2}
-          </Text> */}
-          </View>
-        ))}
-      </View>
+      {todoList.map((todo, indexNo) => (
+        <Text
+          key={indexNo.toString()}// key={todo.title} 
+          style={{textAlign: 'center', backgroundColor: 'aqua'}}>
+          Rastgele metin  : {todo.title} Rastgele Boolean {todo.complate.toString()}
+        </Text>
+      ))}
     </View>
   );
 }
