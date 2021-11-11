@@ -76,7 +76,11 @@ export default function App() {
 
   return (
     //SafeAreaView ilk View olacak flex:1 yani her yeri kaplayacak
+
     <SafeAreaView style={{backgroundColor: 'white', flex: 1}}>
+
+
+
       <ScrollView style={{flex: 1}}>
         <Text>
           Random Sayı : {randomSayi} ! = {faktoriyel(randomSayi)}
@@ -98,11 +102,24 @@ export default function App() {
         ))}
 
         {todoList.map((todo, index) => (
+<<<<<<< HEAD
           <TouchableOpacity style={styles.todoStyle}
            >
             <Text  style={todo.complate ? styles.textStyleSuccess : styles.textStyle}
               key={index.toString()} // key={todo.title}
              >
+=======
+          <TouchableOpacity
+            style={{
+              borderColor: 'red',
+              borderWidth: 3,
+              padding: 5,
+              margin: 5,
+            }}>
+            <Text
+              key={index.toString()} // key={todo.title}
+              style={{backgroundColor: 'aqua'}}>
+>>>>>>> 3976eee55c3a11cfa62ee6bfb40b1c880eafd8e6
               Rastgele metin : {todo.title} Rastgele Boolean{' '}
               {todo.complate.toString()}
             </Text>
