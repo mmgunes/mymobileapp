@@ -1,23 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
 import {styles} from './style';
 
 export default function App3() {
   
-    let sayi = 0;
-
-  const sayiAzalt = () => {
-    sayi--;
-    console.log(sayi);
-  };
+   const [sayi, setSayi] = useState(0)
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'gray'}}>
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <TouchableOpacity
           onPress={() => {
-            sayi++;
-            console.log(sayi);
+            setSayi(sayi+1)
           }}
           style={{
             alignItems: 'center',
@@ -33,7 +27,9 @@ export default function App3() {
         </TouchableOpacity>
         <Text style={styles.textStyle}>SAYI : {sayi}</Text>
         <TouchableOpacity
-          onPress={sayiAzalt}
+         onPress={() => {
+            setSayi(sayi-1)
+          }}
           style={{
             alignItems: 'center',
             justifyContent: 'center',
