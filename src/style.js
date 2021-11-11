@@ -16,6 +16,11 @@ export const styles = StyleSheet.create({
     color: '#000',
     textAlign: 'center',
   },
+  textStyleSuccess: {
+    fontSize: 24,
+    color: 'green',
+    textAlign: 'center',
+  },
 
   header: {
     flex: 2,
@@ -41,6 +46,14 @@ export const styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'center',
     backgroundColor: 'green',
+  },
+
+  todoStyle: {
+    borderColor: 'red',
+    borderWidth: 3,
+    padding: 5,
+    margin: 5,
+    borderRadius: 20,
   },
 
   footer: {

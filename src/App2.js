@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {SafeAreaView, Text, TouchableOpacity, ScrollView} from 'react-native';
 import {styles} from './style';
 
 export default function App() {
@@ -62,7 +62,7 @@ export default function App() {
     return result;
   }
 
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 20; i++) {
     // todoList.push({title: 'Çalış', complate: true});
     todoList.push({
       title: rastgeleStringGetir(),
@@ -75,33 +75,40 @@ export default function App() {
   });
 
   return (
-    <View style={{backgroundColor: 'yellow'}}>
-      <Text>
-        Random Sayı : {randomSayi} ! = {faktoriyel(randomSayi)}
-      </Text>
-      <Text style={{backgroundColor: 'green'}}>
-        Random Sayı : {randomSayi} bir{tekmiCiftmi(randomSayi)}
-      </Text>
-      <Text>
-        İf Kısayolu Random Sayı :{' '}
-        {randomSayi % 2 == 0
-          ? randomSayi + ' Çift Sayıdır'
-          : randomSayi + ' Tek Sayıdır'}
-      </Text>
-
-      {numList.map((num2, indexNo) => (
-        <Text key={indexNo.toString()} style={styles.textStyle}>
-          Rastgele sayı {indexNo + 1} : {num2}
+    //SafeAreaView ilk View olacak flex:1 yani her yeri kaplayacak
+    <SafeAreaView style={{backgroundColor: 'white', flex: 1}}>
+      <ScrollView style={{flex: 1}}>
+        <Text>
+          Random Sayı : {randomSayi} ! = {faktoriyel(randomSayi)}
         </Text>
-      ))}
-
-      {todoList.map((todo, indexNo) => (
-        <Text
-          key={indexNo.toString()}// key={todo.title} 
-          style={{textAlign: 'center', backgroundColor: 'aqua'}}>
-          Rastgele metin  : {todo.title} Rastgele Boolean {todo.complate.toString()}
+        <Text style={{backgroundColor: 'green'}}>
+          Random Sayı : {randomSayi} bir{tekmiCiftmi(randomSayi)}
         </Text>
-      ))}
-    </View>
+        <Text>
+          İf Kısayolu Random Sayı :{' '}
+          {randomSayi % 2 == 0
+            ? randomSayi + ' Çift Sayıdır'
+            : randomSayi + ' Tek Sayıdır'}
+        </Text>
+
+        {numList.map((num2, indexNo) => (
+          <Text key={indexNo.toString()} style={styles.textStyle}>
+            Rastgele sayı {indexNo + 1} : {num2}
+          </Text>
+        ))}
+
+        {todoList.map((todo, index) => (
+          <TouchableOpacity style={styles.todoStyle}
+           >
+            <Text  style={todo.complate ? styles.textStyleSuccess : styles.textStyle}
+              key={index.toString()} // key={todo.title}
+             >
+              Rastgele metin : {todo.title} Rastgele Boolean{' '}
+              {todo.complate.toString()}
+            </Text>
+          </TouchableOpacity> //View gibidir
+        ))}
+      </ScrollView>
+    </SafeAreaView>
   );
 }
