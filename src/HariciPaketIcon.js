@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, ActivityIndicator} from 'react-native';
 
 import IconFa from 'react-native-vector-icons/FontAwesome';
 
@@ -13,7 +13,7 @@ export default HariciPaketIcon = () => {
         <Text>Harici Paket Yükleme </Text>
         {/* Komutu çalıştır: npx react-native link react-native-vector-icons 
         ikonların doğru yüklenmesi için gerekli  */}
-
+        <ActivityIndicator size="large" color="#0000ff" />
 
     </View>
   );
