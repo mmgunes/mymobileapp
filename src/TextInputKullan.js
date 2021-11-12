@@ -19,7 +19,6 @@ export default function TextInputKullan() {
     return f;
   };
 
-
   return (
     <SafeAreaView style={{flex: 1}}>
       <View
@@ -29,12 +28,16 @@ export default function TextInputKullan() {
           justifyContent: 'center',
           padding: 5,
         }}>
+        <Text style={{fontSize: 22, color: 'orange', marginBottom: 7}}>
+          Faktöriyeli Hesaplanacak Sayı
+        </Text>
         <TextInput
           value={sayi}
           onChangeText={value => {
-              setSayi(value);
-            setFaktoriyel('')
-            }}
+            setSayi(value);
+            setFaktoriyel('');
+          }}
+          keyboardType="numeric"
           style={{
             borderColor: 'blue',
             borderWidth: 2,
@@ -45,7 +48,7 @@ export default function TextInputKullan() {
         />
         <TouchableOpacity
           onPress={() => {
-            setFaktoriyel(getFaktoriyel(sayi))
+            setFaktoriyel(getFaktoriyel(sayi));
           }}
           style={{
             alignItems: 'center',
