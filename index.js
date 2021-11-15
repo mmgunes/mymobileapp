@@ -10,5 +10,6 @@ import App3 from './src/sayac';
 import TextInputKullan from './src/TextInputKullan';
 import Login from './src/Login'
 import HariciPaketIcon from './src/HariciPaketIcon'
+import ToDoList from './src/ToDoList'
 
-AppRegistry.registerComponent(appName, () => HariciPaketIcon);
+AppRegistry.registerComponent(appName, () => ToDoList);
