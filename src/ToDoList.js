@@ -23,13 +23,15 @@ export default function ToDoList() {
   const [todoTitle, setTodoTitle] = useState('');
   const [todoList, setTodoList] = useState(initTodoList);
 
-  const addTodo = () => {
+  const AddTodo = () => {
     let data = {title: todoTitle, complate: false};
     let newList = todoList;
     newList.push(data);
     setTodoList(newList);
     setTodoTitle('');
   };
+
+  //Bu fonksiyonla alttaki Delete Fonk Aynı yazımı farklı
 
   UpdateTodo = (todo, index) => {
     let newList = [];
@@ -39,7 +41,17 @@ export default function ToDoList() {
         : newList.push(item);
     });
     setTodoList(newList);
-   
+  };
+
+  // Map ve Foreach birbirinin yerine kullanabirsin
+  DeleteTodo = (todo, index) => {
+    let newList = [];
+    todoList.forEach((item, i) => {
+      if (i != index) {
+        newList.push(item);
+      }
+    });
+    setTodoList(newList);
   };
 
   return (
@@ -65,7 +77,7 @@ export default function ToDoList() {
           }}
         />
       </View>
-
+      <Text>Silmek için uzun basın</Text>
       <View
         style={{
           flex: 3,
@@ -74,7 +86,8 @@ export default function ToDoList() {
         <ScrollView style={{flex: 1, width: '100%'}}>
           {todoList.map((todo, index) => (
             <TouchableOpacity
-              onPress={()=>UpdateTodo(todo, index)} // Bu şekilde çalışmaz onPress={UpdateTodo(todo, index)}
+              onPress={() => UpdateTodo(todo, index)} // Bu şekilde çalışmaz onPress={UpdateTodo(todo, index)}
+              onLongPress={() => DeleteTodo(todo, index)}
               key={index.toString()}
               style={{
                 flexDirection: 'row',
@@ -99,7 +112,7 @@ export default function ToDoList() {
         </ScrollView>
       </View>
       <TouchableOpacity
-        onPress={() => addTodo()}
+        onPress={() => AddTodo()}
         style={{
           width: 60,
           height: 60,
