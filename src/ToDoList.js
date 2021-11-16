@@ -12,8 +12,6 @@ import {
 
 import {styles} from './style';
 
-
-
 export default function ToDoList() {
   let initTodoList = [
     {title: 'RN Çalış', complate: false},
@@ -25,13 +23,24 @@ export default function ToDoList() {
   const [todoTitle, setTodoTitle] = useState('');
   const [todoList, setTodoList] = useState(initTodoList);
 
-  const addTodo = () =>{
-    let data={title:todoTitle, complate: false};
-    let newList= todoList;
-    newList.push(data);  
+  const addTodo = () => {
+    let data = {title: todoTitle, complate: false};
+    let newList = todoList;
+    newList.push(data);
     setTodoList(newList);
     setTodoTitle('');
-   } 
+  };
+
+  UpdateTodo = (todo, index) => {
+    let newList = [];
+    todoList.map((item, i) => {
+      i == index
+        ? newList.push({title: item.title, complate: !item.complate})
+        : newList.push(item);
+    });
+    setTodoList(newList);
+   
+  };
 
   return (
     <SafeAreaView
@@ -60,14 +69,16 @@ export default function ToDoList() {
       <View
         style={{
           flex: 3,
+          width: '100%',
         }}>
         <ScrollView style={{flex: 1, width: '100%'}}>
           {todoList.map((todo, index) => (
             <TouchableOpacity
+              onPress={()=>UpdateTodo(todo, index)} // Bu şekilde çalışmaz onPress={UpdateTodo(todo, index)}
               key={index.toString()}
               style={{
                 flexDirection: 'row',
-                width: '65%',
+                width: '90%',
                 height: 60,
                 borderColor: todo.complate ? 'green' : 'red',
                 borderWidth: 1,
@@ -75,20 +86,20 @@ export default function ToDoList() {
                 padding: 10,
                 borderRadius: 20,
                 //justifyContent: 'center',
-                justifyContent:'space-between',
-                alignItems:'center'
+                justifyContent: 'space-between',
+                alignItems: 'center',
               }}>
               <Text>{todo.title}</Text>
-              <IconFt 
-              name= {todo.complate ? 'checkbox-active' : 'checkbox-passive'}
-               size={32}
-               color={todo.complate ? 'green' : 'red'}></IconFt>
+              <IconFt
+                name={todo.complate ? 'checkbox-active' : 'checkbox-passive'}
+                size={32}
+                color={todo.complate ? 'green' : 'red'}></IconFt>
             </TouchableOpacity>
           ))}
         </ScrollView>
       </View>
       <TouchableOpacity
-      onPress={()=>addTodo()}
+        onPress={() => addTodo()}
         style={{
           width: 60,
           height: 60,
