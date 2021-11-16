@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {styles} from './style';
-export default function TextInputKullan() {
+export default function Faktoriyel() {
   const [sayi, setSayi] = useState('');
   const [faktoriyel, setFaktoriyel] = useState('');
 
