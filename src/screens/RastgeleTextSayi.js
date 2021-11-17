@@ -1,6 +1,6 @@
 import React from 'react';
 import {SafeAreaView, Text, TouchableOpacity, ScrollView} from 'react-native';
-import {styles} from './style';
+import {styles} from './Style';
 
 export default function RastgeleTextSayi() {
   const faktoriyel = sayi => {

@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {SafeAreaView, Text, TouchableOpacity, View} from 'react-native';
-import {styles} from './style';
+import {styles} from './Style';
 
-export default function App3() {
+export default function Sayac() {
   
    const [sayi, setSayi] = useState(0)
 

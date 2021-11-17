@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import {styles} from './style';
+import {styles} from './screens/Style';
 
 export default function ToDoList() {
   let initTodoList = [

@@ -6,7 +6,7 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
-import {styles} from './style';
+import {styles} from './Style';
 export default function Faktoriyel() {
   const [sayi, setSayi] = useState('');
   const [faktoriyel, setFaktoriyel] = useState('');
