@@ -2,7 +2,7 @@ import React from 'react';
 import {SafeAreaView, Text, TouchableOpacity, ScrollView} from 'react-native';
 import {styles} from './style';
 
-export default function App() {
+export default function RastgeleTextSayi() {
   const faktoriyel = sayi => {
     let f = 1;
     for (let i = 1; i <= sayi; i++) {
