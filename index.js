@@ -5,7 +5,7 @@
  import {AppRegistry} from 'react-native';
  import FlexBox from './src/screens/FlexBox';
  import {name as appName} from './app.json';
- import RastgeleTextSayi from './src/screens/RastgeleTextSayi';
+ import ES_RastgeleTextSayi from './src/screens/ES_RastgeleTextSayi';
  import Sayac from './src/screens/Sayac';
  import Faktoriyel from './src/screens/Faktoriyel';
  import Login from './src/screens/Login'
@@ -13,5 +13,7 @@
  import ToDoList from './src/screens/ToDoList'
  import FlatList from './src/screens/FlatList'
  import Home from './src/screens/Home'
- 
- AppRegistry.registerComponent(appName, () => Home);
+ import App from './src/App'
+
+
+ AppRegistry.registerComponent(appName, () => App);

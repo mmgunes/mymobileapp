@@ -13,14 +13,14 @@ const HomeScreen = ({navigation}) => {
             width: '95%',
             height: 50,
             alignItems: 'center',
-            backgroundColor: 'red',
+            backgroundColor: 'blue',
             justifyContent: 'center',
             borderRadius: 30,
           }}>
           <Text style={{color: 'white', fontSize: 20}}>FlexBox Screen</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Faktoriyel')}
+          onPress={() => navigation.navigate('Login')}
           style={{
             flex: 1,
             margin: 10,
@@ -31,7 +31,7 @@ const HomeScreen = ({navigation}) => {
             justifyContent: 'center',
             borderRadius: 30,
           }}>
-          <Text style={{color: 'black', fontSize: 20}}>Faktoriyel Screen</Text>
+          <Text style={{color: 'black', fontSize: 20}}>Login Screen</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate('FlatList')}

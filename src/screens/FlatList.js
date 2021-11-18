@@ -8,9 +8,8 @@ import {
   ScrollView,
   TextInput,
   TouchableOpacity,
+  FlatList
 } from 'react-native';
-
-
 
 export default function FlatListScreen() {
   let initTodoList = [
@@ -22,6 +21,38 @@ export default function FlatListScreen() {
 
   const [todoTitle, setTodoTitle] = useState('');
   const [todoList, setTodoList] = useState(initTodoList);
+
+  itemSeperatorComponent = () => {
+    return <View style={{margin: 5, height: 1, width:'100%', backgroundColor:'#ccc'}} />;
+  };
+
+  RenderItem = ({item, index}) => {
+    return (
+      <TouchableOpacity
+        onPress={() => UpdateTodo(item, index)} // Bu şekilde çalışmaz onPress={UpdateTodo(todo, index)}
+        onLongPress={() => DeleteTodo(item, index)}
+        key={index.toString()}
+        style={{
+          flexDirection: 'row',
+          width: '90%',
+          height: 60,
+          borderColor: item.complate ? 'green' : 'red',
+          borderWidth: 1,
+          margin: 10,
+          padding: 10,
+          borderRadius: 20,
+          //justifyContent: 'center',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}>
+        <Text>{item.title}</Text>
+        <IconFt
+          name={item.complate ? 'checkbox-active' : 'checkbox-passive'}
+          size={32}
+          color={item.complate ? 'green' : 'red'}></IconFt>
+      </TouchableOpacity>
+    );
+  };
 
   const AddTodo = () => {
     let data = {title: todoTitle, complate: false};
@@ -83,33 +114,13 @@ export default function FlatListScreen() {
           flex: 3,
           width: '100%',
         }}>
-        <ScrollView style={{flex: 1, width: '100%'}}>
-          {todoList.map((todo, index) => (
-            <TouchableOpacity
-              onPress={() => UpdateTodo(todo, index)} // Bu şekilde çalışmaz onPress={UpdateTodo(todo, index)}
-              onLongPress={() => DeleteTodo(todo, index)}
-              key={index.toString()}
-              style={{
-                flexDirection: 'row',
-                width: '90%',
-                height: 60,
-                borderColor: todo.complate ? 'green' : 'red',
-                borderWidth: 1,
-                margin: 10,
-                padding: 10,
-                borderRadius: 20,
-                //justifyContent: 'center',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}>
-              <Text>{todo.title}</Text>
-              <IconFt
-                name={todo.complate ? 'checkbox-active' : 'checkbox-passive'}
-                size={32}
-                color={todo.complate ? 'green' : 'red'}></IconFt>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
+        <FlatList
+          style={{flex: 1, width: '100%'}}
+          data={todoList}
+          itemSeperatorComponent={itemSeperatorComponent} //itemSeperatorComponent,keyExtractor ve RenderItem biz oluşturduk
+          renderItem={RenderItem}
+          keyExtractor={(item, index) => index.toString()}
+        />
       </View>
       <TouchableOpacity
         onPress={() => AddTodo()}
