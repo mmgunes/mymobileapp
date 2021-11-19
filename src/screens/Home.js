@@ -20,6 +20,20 @@ const HomeScreen = ({navigation}) => {
           <Text style={{color: 'white', fontSize: 20}}>FlexBox Screen</Text>
         </TouchableOpacity>
         <TouchableOpacity
+          onPress={() => navigation.navigate('Faktoriyel')}
+          style={{
+            flex: 1,
+            margin: 10,
+            width: '95%',
+            height: 50,
+            alignItems: 'center',
+            backgroundColor: 'green',
+            justifyContent: 'center',
+            borderRadius: 30,
+          }}>
+          <Text style={{color: 'white', fontSize: 20}}>Faktöriyel Screen</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
           onPress={() => navigation.navigate('Login')}
           style={{
             flex: 1,

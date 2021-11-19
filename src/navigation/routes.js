@@ -45,6 +45,16 @@ const Routes = () => {
           }}
         />
         <Stack.Screen
+          name="Faktoriyel"
+          component={FaktoriyelScren}
+          options={{
+            title: 'Faktoriyel Screen',
+            headerStyle: {backgroundColor: 'green'},
+            headerTintColor: 'white',
+            headerTitleStyle: {fontWeight: 'bold'},
+          }}
+        />
+        <Stack.Screen
           name="Login"
           component={LoginScreen}
           options={{

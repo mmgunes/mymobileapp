@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'purple',
   },
   content: {
-    flex: 6,
+    flex: 8,
     alignContent: 'center',
     justifyContent: 'center',
     backgroundColor: 'green',
